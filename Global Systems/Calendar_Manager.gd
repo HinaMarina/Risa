@@ -5,10 +5,7 @@ extends Node
 signal day_updated(day,month)
 var month_size:int = 28
 var current_week = func week(): return int(current_day/7)
-
-func _ready() -> void:
-	pass
-
+		
 func update_day():
 	if current_day+1 <= month_size:
 		current_day += 1

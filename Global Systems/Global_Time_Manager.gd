@@ -10,7 +10,7 @@ func update_time(turns_passed:int):
 		current_turn += turns_passed
 		update_UI()
 	else:
-		emit_signal("not_enough_turns")
+		not_enough_turns.emit()
 		
 func unlock_night_turns():
 	number_of_turns +=2
@@ -18,7 +18,7 @@ func unlock_night_turns():
 	
 func end_the_day():
 	current_turn = 0
-	emit_signal("day_has_ended")
+	day_has_ended.emit()
 	
 func update_UI():
 	pass
