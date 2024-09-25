@@ -1,4 +1,4 @@
-class_name State extends Node
+class_name State extends Node2D
 
 @onready var animation_tree:AnimationTree
 @onready var animation_player:AnimationPlayer
@@ -46,7 +46,8 @@ func complete():
 
 func set_state(new_state:State):
 	if new_state != null and new_state != current_state:
-		current_state.complete()
+		if current_state!=null:
+			current_state.complete()
 		current_state = new_state
 		current_state.enter()
 		
