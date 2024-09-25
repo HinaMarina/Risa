@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GlobalTimeManager="*res://Global Systems/Global_Time_Manager.gd"
+CalendarManager="*res://Global Systems/Calendar_Manager.gd"
 
 [display]
 
