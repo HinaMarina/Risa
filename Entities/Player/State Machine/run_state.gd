@@ -1,6 +1,5 @@
 extends State
 
-var input_vector:Vector2
 var is_in_stairs:bool
 
 @export var MAX_SPEED:float = 100
@@ -29,7 +28,6 @@ func set_state_assets():
 			sprite = child	
 func move():
 	var input_vector_fixed = fixing_input_vector_angles(input_vector)
-	print(input_vector_fixed)
 	if is_in_stairs:
 		input_vector_fixed.y = 2.3 * fixing_input_vector_angles(input_vector).y
 		input_vector_fixed = input_vector_fixed.normalized()

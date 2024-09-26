@@ -5,6 +5,10 @@ func _ready() -> void:
 	set_state_assets()
 
 
+func do():
+	super()
+	sets_animation()
+
 func set_state_assets():
 	for child in self.get_children():
 		if child is AnimationTree:
@@ -12,4 +16,7 @@ func set_state_assets():
 		if child is AnimationPlayer:
 			animation_player = child
 		if child is Sprite2D:
-			sprite = child	
+			sprite = child
+			
+func sets_animation():
+	animation_tree.set("parameters/blend_position",input_vector)

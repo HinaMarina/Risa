@@ -3,6 +3,7 @@ class_name State extends Node2D
 @onready var animation_tree:AnimationTree
 @onready var animation_player:AnimationPlayer
 @onready var sprite : Sprite2D
+var input_vector:Vector2
 
 @export var body : CharacterBody2D
 var children_states : Array[State] = []

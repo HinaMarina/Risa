@@ -2,10 +2,10 @@ class_name State_Machine extends State
 
 @export var Idle_state : State
 @export var Run_state: State
-@onready var input_vector:Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	super()
 	set_state(Idle_state)
 
 
@@ -13,6 +13,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	is_idle()
 	current_state.do()
+	for each in children_states:
+		print (str(each.name) +" "+ str(each.sprite.visible))
 			
 func _physics_process(delta: float) -> void:
 	current_state.physics_do()
@@ -28,7 +30,11 @@ func _input(event: InputEvent) -> void:
 			input_vector.x = Input.get_axis("ui_left","ui_right")
 			input_vector.y = Input.get_axis("ui_up","ui_down")
 			input_vector = input_vector.normalized()
-			Run_state.input_vector = input_vector
+			update_state_input_vector()
+			
+func set_state(new_state:State):
+	super(new_state)
+	hide_other_state_sprites()
 						
 func hide_other_state_sprites():
 	for each in children_states:
@@ -36,3 +42,7 @@ func hide_other_state_sprites():
 			each.sprite.visible = false
 		else:
 			each.sprite.visible = true
+
+func update_state_input_vector():
+	for each in children_states:
+		each.input_vector = input_vector
