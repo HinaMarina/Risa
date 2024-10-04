@@ -53,6 +53,6 @@ func age_developer():
 		current_age += 1
 		crop_age += 1
 
-func giving_bonds():
+func giving_bonds(): ##############UNFINISHED
 	if is_giver:
 		pass
