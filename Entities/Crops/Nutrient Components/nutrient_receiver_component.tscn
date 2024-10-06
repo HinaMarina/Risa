@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://ca121eq2htc7y"]
+[gd_scene load_steps=3 format=3 uid="uid://ca121eq2htc7y"]
 
 [ext_resource type="Script" path="res://Entities/Crops/Nutrient Components/nutrient_receiver_component.gd" id="1_jpan0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yoevp"]
+size = Vector2(18, 16)
 
 [node name="Nutrient_Receiver_Component" type="Node2D" node_paths=PackedStringArray("area2d")]
 script = ExtResource("1_jpan0")
@@ -9,6 +12,22 @@ area2d = NodePath("Area2D")
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 8
 collision_mask = 4
+
+[node name="CollisionShape N" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_yoevp")
+
+[node name="CollisionShape W" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-18, 0)
+shape = SubResource("RectangleShape2D_yoevp")
+
+[node name="CollisionShape E" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(18, 0)
+shape = SubResource("RectangleShape2D_yoevp")
+
+[node name="CollisionShape S" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 16)
+shape = SubResource("RectangleShape2D_yoevp")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

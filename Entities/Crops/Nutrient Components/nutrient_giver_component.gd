@@ -20,9 +20,9 @@ func on_disposible_bonds_updated():
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if disposable_bonds > 0:
 		disposable_bonds -= 1
-		disposable_bonds_updated.emit(disposable_bonds)
-
+		disposable_bonds_updated.emit()
+		
 func _on_area_2d_area_exited(area: Area2D) -> void:
 	if disposable_bonds < 4:
 		disposable_bonds += 1
-		disposable_bonds_updated.emit(disposable_bonds)
+		disposable_bonds_updated.emit()

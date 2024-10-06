@@ -13,8 +13,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	is_idle()
 	current_state.do()
-	for each in children_states:
-		print (str(each.name) +" "+ str(each.sprite.visible))
+
 			
 func _physics_process(delta: float) -> void:
 	current_state.physics_do()

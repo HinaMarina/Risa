@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://5ns8a0r6jpic"]
+
+[ext_resource type="Script" path="res://Entities/Crops/crop_class.gd" id="1_65xrl"]
+[ext_resource type="PackedScene" uid="uid://b4wmc78lrle5d" path="res://Prototype Assets/Prototype Entities/Corn/corn_sprout.tscn" id="2_oakgs"]
+[ext_resource type="Texture2D" uid="uid://dc2h1iqn8njif" path="res://Prototype Assets/Prototype Entities/Corn/Corn_Sprite.png" id="2_u84xp"]
+[ext_resource type="PackedScene" uid="uid://ca121eq2htc7y" path="res://Entities/Crops/Nutrient Components/nutrient_receiver_component.tscn" id="3_ue1vj"]
+
+[node name="Corn_Seed" type="Node2D" node_paths=PackedStringArray("Sprite")]
+script = ExtResource("1_65xrl")
+Sprite = NodePath("Sprite2D")
+age_limit = 1
+nutrient_bond_number = 3
+next_development_stage = ExtResource("2_oakgs")
+next_stage_age_limit = 1
+normal_range = Vector2i(5, 7)
+nourished_range = Vector2i(4, 5)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_u84xp")
+hframes = 6
+
+[node name="Nutrient_Receiver_Component" parent="." instance=ExtResource("3_ue1vj")]
