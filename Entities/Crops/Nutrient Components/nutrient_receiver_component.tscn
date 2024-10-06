@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://ca121eq2htc7y"]
+
+[ext_resource type="Script" path="res://Entities/Crops/Nutrient Components/nutrient_receiver_component.gd" id="1_jpan0"]
+
+[node name="Nutrient_Receiver_Component" type="Node2D" node_paths=PackedStringArray("area2d")]
+script = ExtResource("1_jpan0")
+area2d = NodePath("Area2D")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 4
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
