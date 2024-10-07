@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bd10xggh0pnwy"]
+
+[ext_resource type="Texture2D" uid="uid://cf1smj5go1scb" path="res://Prototype Assets/Prototype Entities/Corn/Corn_Sprite.png" id="1_7tuec"]
+
+[node name="CornFruit" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7tuec")
+hframes = 6
+frame = 5

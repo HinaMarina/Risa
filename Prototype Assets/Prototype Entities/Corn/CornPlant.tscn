@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://cwr6uk6jr6ar"]
+
+[ext_resource type="Script" path="res://Entities/Crops/plant_class.gd" id="1_jy7fu"]
+[ext_resource type="PackedScene" uid="uid://bd10xggh0pnwy" path="res://Prototype Assets/Prototype Entities/Corn/Corn_Fruit.tscn" id="2_0sxcy"]
+[ext_resource type="PackedScene" uid="uid://dvf5cngb0tqnp" path="res://Entities/Crops/Nutrient Components/nutrient_giver_component.tscn" id="2_0y1um"]
+[ext_resource type="Texture2D" uid="uid://cf1smj5go1scb" path="res://Prototype Assets/Prototype Entities/Corn/Corn_Sprite.png" id="2_w874h"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vu1lh"]
+radius = 8.0
+
+[node name="CornPlant" type="Node2D" node_paths=PackedStringArray("harvest_area2d", "Sprite")]
+script = ExtResource("1_jy7fu")
+regrowable = true
+regrowth_number = 1
+harvested_plant = ExtResource("2_0sxcy")
+harvest_area2d = NodePath("Area2D")
+Species = "Corn"
+Sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_w874h")
+hframes = 6
+frame = 2
+
+[node name="Nutrient_Giver_Component" parent="." instance=ExtResource("2_0y1um")]
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_vu1lh")

@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://4dp651j45l3n"]
+
+[ext_resource type="Script" path="res://Entities/Crops/sprout_class.gd" id="1_t37ev"]
+[ext_resource type="PackedScene" uid="uid://cwr6uk6jr6ar" path="res://Prototype Assets/Prototype Entities/Corn/CornPlant.tscn" id="2_pnv6c"]
+[ext_resource type="PackedScene" uid="uid://ca121eq2htc7y" path="res://Entities/Crops/Nutrient Components/nutrient_receiver_component.tscn" id="2_rg22q"]
+[ext_resource type="PackedScene" uid="uid://dvf5cngb0tqnp" path="res://Entities/Crops/Nutrient Components/nutrient_giver_component.tscn" id="3_na4dm"]
+[ext_resource type="Texture2D" uid="uid://cf1smj5go1scb" path="res://Prototype Assets/Prototype Entities/Corn/Corn_Sprite.png" id="4_v1ipr"]
+
+[node name="CornSprout" type="Node2D" node_paths=PackedStringArray("receiver", "giver", "Sprite")]
+script = ExtResource("1_t37ev")
+receiver = NodePath("Nutrient_Receiver_Component")
+giver = NodePath("Nutrient_Giver_Component")
+nourished_interval = Vector2i(4, 6)
+interval = Vector2i(6, 12)
+Species = "Corn"
+Sprite = NodePath("Sprite2D")
+next_stage = ExtResource("2_pnv6c")
+
+[node name="Nutrient_Receiver_Component" parent="." instance=ExtResource("2_rg22q")]
+
+[node name="Nutrient_Giver_Component" parent="." instance=ExtResource("3_na4dm")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("4_v1ipr")
+hframes = 6
+frame = 1

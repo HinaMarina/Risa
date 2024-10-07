@@ -9,8 +9,7 @@ var current_week = func week(): return int(current_day/7)
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_released("ui_accept"):
 		update_day()
-		print(str(current_day) + " " + str(current_month))		
-		
+		print("day updated")		
 func update_day():
 	if current_day+1 <= month_size:
 		current_day += 1

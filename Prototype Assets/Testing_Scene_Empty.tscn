@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dqtkwh84ekv2u" path="res://Entities/Player/Player.tscn" id="1_ekd6t"]
 [ext_resource type="Script" path="res://Prototype Assets/testing_scene_empty.gd" id="1_hdjox"]
 [ext_resource type="Texture2D" uid="uid://c4b6tky1kbisp" path="res://icon.svg" id="2_nkolr"]
-[ext_resource type="PackedScene" uid="uid://5ns8a0r6jpic" path="res://Prototype Assets/Prototype Entities/Corn/corn_seed.tscn" id="4_jnq8l"]
+[ext_resource type="PackedScene" uid="uid://caqqy4wbah108" path="res://Prototype Assets/Prototype Entities/Corn/corn_seed.tscn" id="4_jnq8l"]
 
 [node name="Node2D" type="Node2D"]
 texture_filter = 1
@@ -16,20 +16,5 @@ texture = ExtResource("2_nkolr")
 [node name="Player" parent="." instance=ExtResource("1_ekd6t")]
 position = Vector2(78, 22)
 
-[node name="Corn_Seed" parent="." instance=ExtResource("4_jnq8l")]
-position = Vector2(129, 2)
-
-[node name="Corn_Seed2" parent="." instance=ExtResource("4_jnq8l")]
-position = Vector2(147, 2)
-
-[node name="Corn_Seed3" parent="." instance=ExtResource("4_jnq8l")]
-position = Vector2(147, 18)
-
-[node name="Corn_Seed4" parent="." instance=ExtResource("4_jnq8l")]
-position = Vector2(165, 2)
-
-[node name="Corn_Seed5" parent="." instance=ExtResource("4_jnq8l")]
-position = Vector2(183, 2)
-
-[node name="Corn_Seed6" parent="." instance=ExtResource("4_jnq8l")]
-position = Vector2(201, 2)
+[node name="CornSeed7" parent="." instance=ExtResource("4_jnq8l")]
+position = Vector2(216, -50)
