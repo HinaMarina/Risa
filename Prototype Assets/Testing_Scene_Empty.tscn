@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dk1d11xmoacf5"]
+[gd_scene load_steps=6 format=3 uid="uid://dk1d11xmoacf5"]
 
 [ext_resource type="PackedScene" uid="uid://dqtkwh84ekv2u" path="res://Entities/Player/Player.tscn" id="1_ekd6t"]
 [ext_resource type="Script" path="res://Prototype Assets/testing_scene_empty.gd" id="1_hdjox"]
 [ext_resource type="Texture2D" uid="uid://c4b6tky1kbisp" path="res://icon.svg" id="2_nkolr"]
 [ext_resource type="PackedScene" uid="uid://caqqy4wbah108" path="res://Prototype Assets/Prototype Entities/Corn/corn_seed.tscn" id="4_jnq8l"]
+[ext_resource type="PackedScene" uid="uid://dkjwa5l2qvs71" path="res://Prototype Assets/Prototype Entities/Sunflower/SunflowerSeed.tscn" id="5_o338d"]
 
 [node name="Node2D" type="Node2D"]
 texture_filter = 1
@@ -17,10 +18,28 @@ texture = ExtResource("2_nkolr")
 position = Vector2(78, 22)
 
 [node name="CornSeed" parent="." instance=ExtResource("4_jnq8l")]
-position = Vector2(294, -49)
+position = Vector2(216, -16)
 
 [node name="CornSeed2" parent="." instance=ExtResource("4_jnq8l")]
 position = Vector2(324, 9)
 
 [node name="CornSeed3" parent="." instance=ExtResource("4_jnq8l")]
 position = Vector2(180, -16)
+
+[node name="SunflowerSeed" parent="." instance=ExtResource("5_o338d")]
+position = Vector2(198, -16)
+
+[node name="SunflowerSeed2" parent="." instance=ExtResource("5_o338d")]
+position = Vector2(216, 0)
+
+[node name="SunflowerSeed3" parent="." instance=ExtResource("5_o338d")]
+position = Vector2(234, -16)
+
+[node name="SunflowerSeed4" parent="." instance=ExtResource("5_o338d")]
+position = Vector2(324, -7)
+
+[node name="SunflowerSeed5" parent="." instance=ExtResource("5_o338d")]
+position = Vector2(284, -59)
+
+[node name="SunflowerSeed6" parent="." instance=ExtResource("5_o338d")]
+position = Vector2(302, -59)

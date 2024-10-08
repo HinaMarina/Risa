@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bp2glida3ogta"]
+
+[ext_resource type="Texture2D" uid="uid://b4svl32y81uuq" path="res://Prototype Assets/Prototype Entities/Sunflower/Sunflower_Sprite.png" id="1_6ha6o"]
+
+[node name="SunflowerFruit" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_6ha6o")
+hframes = 6
+frame = 5

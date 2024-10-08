@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://blqjgewb4sv5i"]
+
+[ext_resource type="Script" path="res://Entities/Crops/sprout_class.gd" id="1_ek4wl"]
+[ext_resource type="PackedScene" uid="uid://ca121eq2htc7y" path="res://Entities/Crops/Nutrient Components/nutrient_receiver_component.tscn" id="2_kwiut"]
+[ext_resource type="PackedScene" uid="uid://crbncoev2w2pt" path="res://Prototype Assets/Prototype Entities/Sunflower/SunflowerPlant.tscn" id="2_pbqu1"]
+[ext_resource type="PackedScene" uid="uid://dvf5cngb0tqnp" path="res://Entities/Crops/Nutrient Components/nutrient_giver_component.tscn" id="3_pn8ff"]
+[ext_resource type="Texture2D" uid="uid://b4svl32y81uuq" path="res://Prototype Assets/Prototype Entities/Sunflower/Sunflower_Sprite.png" id="4_12658"]
+
+[node name="SunflowerSprout" type="Node2D" node_paths=PackedStringArray("receiver", "giver", "Sprite")]
+script = ExtResource("1_ek4wl")
+receiver = NodePath("Nutrient_Receiver_Component")
+giver = NodePath("Nutrient_Giver_Component")
+nourished_interval = Vector2i(3, 6)
+interval = Vector2i(5, 10)
+Species = "Sunflower"
+Sprite = NodePath("Sprite2D")
+next_stage = ExtResource("2_pbqu1")
+nutrients_needed = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("4_12658")
+hframes = 6
+frame = 1
+
+[node name="Nutrient_Receiver_Component" parent="." instance=ExtResource("2_kwiut")]
+
+[node name="Nutrient_Giver_Component" parent="." instance=ExtResource("3_pn8ff")]

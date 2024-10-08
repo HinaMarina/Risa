@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://dkjwa5l2qvs71"]
+
+[ext_resource type="Script" path="res://Entities/Crops/seed_class.gd" id="1_yhp1h"]
+[ext_resource type="PackedScene" uid="uid://blqjgewb4sv5i" path="res://Prototype Assets/Prototype Entities/Sunflower/SunflowerSprout.tscn" id="2_7uwiw"]
+[ext_resource type="PackedScene" uid="uid://ca121eq2htc7y" path="res://Entities/Crops/Nutrient Components/nutrient_receiver_component.tscn" id="2_vdvng"]
+[ext_resource type="Texture2D" uid="uid://b4svl32y81uuq" path="res://Prototype Assets/Prototype Entities/Sunflower/Sunflower_Sprite.png" id="3_fad02"]
+
+[node name="SunflowerSeed" type="Node2D" node_paths=PackedStringArray("nutrient_receiver", "Sprite")]
+script = ExtResource("1_yhp1h")
+nutrient_receiver = NodePath("Nutrient_Receiver_Component")
+Species = "Sunflower"
+Sprite = NodePath("Sprite2D")
+next_stage = ExtResource("2_7uwiw")
+nutrients_needed = 2
+
+[node name="Nutrient_Receiver_Component" parent="." instance=ExtResource("2_vdvng")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_fad02")
+hframes = 6

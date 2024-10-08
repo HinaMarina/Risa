@@ -10,15 +10,18 @@ func on_picking_item(item:PackedScene):
 	item_pickup.emit(item)
 	
 func store_item(item):
-	
 	if stored_items.has(item):
-		var position = stored_items.bsearch(item)
+		var position = stored_items.find(item)
 		var current_number = item_numbers[position]
 		item_numbers[position] = current_number + 1
 		new_item_stored.emit(item,item_numbers[position])
+		print(stored_items,item_numbers)
 		return
 	
 	stored_items.append(item)
-	new_item_stored.emit(item,1)
 	item_numbers.append(1)
+	new_item_stored.emit(item,1)
+	print(stored_items,item_numbers)
+
+
 	

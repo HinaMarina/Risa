@@ -38,7 +38,6 @@ func calculate_next_step():
 
 func update_age():
 	super()
-	print(age)
 	if age >= next_step and age <= age_to_grow:
 		aging_sprite()
 		calculate_next_step()	
@@ -55,7 +54,6 @@ func enable_harvest():
 func harvest():
 	TinyInventoryPrototypeGlobal.on_picking_item(harvested_plant)
 	TinyInventoryPrototypeGlobal.number_of_harvested += 1
-	print(str(TinyInventoryPrototypeGlobal.number_of_harvested) + " foram colhidas")
 	if regrowth_number <= 0:
 		self.queue_free()	
 	else:
