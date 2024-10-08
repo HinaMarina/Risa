@@ -4,10 +4,19 @@ extends Area2D
 @export var e_shape : CollisionShape2D
 @export var w_shape : CollisionShape2D
 @export var picking_spot:Node2D
+var item_to_store : PackedScene
+
+var enable_store:bool
 
 var all_shapes:Array
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("Harvest") && enable_store:
+		TinyInventoryPrototypeGlobal.store_item(item_to_store)
+		picking_spot.get_child(0).queue_free()
+		enable_store = false
+		
 func _ready() -> void:
 	for child in get_children():
 		if child is CollisionShape2D:
@@ -38,7 +47,7 @@ func _on_area_entered(area: Area2D) -> void:
 	
 func picked_up(item:PackedScene):
 	var picking = item.instantiate()
+	item_to_store = item
 	picking_spot.add_child(picking)
 	picking.global_transform = picking_spot.global_transform
-
-	
+	enable_store = true

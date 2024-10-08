@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dqtkwh84ekv2u"]
+[gd_scene load_steps=39 format=3 uid="uid://dqtkwh84ekv2u"]
 
 [ext_resource type="Script" path="res://Entities/Player/State Machine/State_Machine.gd" id="1_cont1"]
 [ext_resource type="Script" path="res://Entities/Player/Player.gd" id="1_rq6fq"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Entities/Player/State Machine/idle_state.gd" id="3_ex0ya"]
 [ext_resource type="Texture2D" uid="uid://c2aqykr7jxl5k" path="res://Entities/Player/Sprites/Idle_state_Mockup_static.png" id="5_sqlrm"]
 [ext_resource type="Script" path="res://Entities/Player/interaction_aim.gd" id="7_o35hy"]
+[ext_resource type="Script" path="res://Entities/Player/Player_Inventory_UI.gd" id="8_4fe0q"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t4snm"]
 radius = 5.0
@@ -546,5 +547,42 @@ shape = SubResource("RectangleShape2D_tqo13")
 
 [node name="Picking_spot" type="Node2D" parent="CharacterBody2D/Interaction_Aim"]
 position = Vector2(0, -45)
+
+[node name="Inventory" type="Node2D" parent="." node_paths=PackedStringArray("inventory_grid", "Canvas")]
+script = ExtResource("8_4fe0q")
+inventory_grid = NodePath("CanvasLayer/Container/VBoxContainer/GridContainer")
+Canvas = NodePath("CanvasLayer")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Inventory"]
+
+[node name="Container" type="Container" parent="Inventory/CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -103.0
+offset_right = 103.0
+offset_bottom = 125.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Inventory/CanvasLayer/Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="Inventory/CanvasLayer/Container/VBoxContainer"]
+layout_mode = 2
+text = "Inventory"
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="Inventory/CanvasLayer/Container/VBoxContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_vertical = 3
+columns = 5
+
+[node name="Control" type="Control" parent="Inventory/CanvasLayer/Container/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
 
 [connection signal="area_entered" from="CharacterBody2D/Interaction_Aim" to="CharacterBody2D/Interaction_Aim" method="_on_area_entered"]

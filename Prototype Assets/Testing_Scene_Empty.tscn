@@ -16,5 +16,11 @@ texture = ExtResource("2_nkolr")
 [node name="Player" parent="." instance=ExtResource("1_ekd6t")]
 position = Vector2(78, 22)
 
-[node name="CornSeed7" parent="." instance=ExtResource("4_jnq8l")]
-position = Vector2(216, -50)
+[node name="CornSeed" parent="." instance=ExtResource("4_jnq8l")]
+position = Vector2(294, -49)
+
+[node name="CornSeed2" parent="." instance=ExtResource("4_jnq8l")]
+position = Vector2(324, 9)
+
+[node name="CornSeed3" parent="." instance=ExtResource("4_jnq8l")]
+position = Vector2(180, -16)
