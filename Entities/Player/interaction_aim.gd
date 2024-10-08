@@ -11,7 +11,12 @@ var enable_store:bool
 var all_shapes:Array
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
+
 func _input(event: InputEvent) -> void:
+	if picking_spot.get_child_count()>0:
+		enable_store = true
+	else:
+		enable_store = false
 	if Input.is_action_just_pressed("Harvest") && enable_store:
 		TinyInventoryPrototypeGlobal.store_item(item_to_store)
 		picking_spot.get_child(0).queue_free()
@@ -26,20 +31,28 @@ func _process(delta: float) -> void:
 	if Input.is_action_pressed("movement_action"):
 		if Input.is_action_pressed("ui_up"):
 			for shape in all_shapes:
-				shape.disabled = true
-			n_shape.disabled = false
+				if shape == n_shape:
+					shape.disabled = false
+				else:
+					shape.disabled = true
 		if Input.is_action_pressed("ui_down"):
 			for shape in all_shapes:
-				shape.disabled = true
-			s_shape.disabled = false
+				if shape == s_shape:
+					shape.disabled = false
+				else:
+					shape.disabled = true
 		if Input.is_action_pressed("ui_left"):
 			for shape in all_shapes:
-				shape.disabled = true
-			w_shape.disabled = false
+				if shape == w_shape:
+					shape.disabled = false
+				else:
+					shape.disabled = true
 		if Input.is_action_pressed("ui_right"):
 			for shape in all_shapes:
-				shape.disabled = true
-			e_shape.disabled = false
+				if shape == e_shape:
+					shape.disabled = false
+				else:
+					shape.disabled = true
 
 
 func _on_area_entered(area: Area2D) -> void:
@@ -50,4 +63,3 @@ func picked_up(item:PackedScene):
 	item_to_store = item
 	picking_spot.add_child(picking)
 	picking.global_transform = picking_spot.global_transform
-	enable_store = true

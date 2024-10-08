@@ -14,7 +14,6 @@ func update_inventory(item,amount):
 		var quantity = TinyInventoryPrototypeGlobal.item_numbers[position]
 		var control_node = Control.new()
 		var new_item = each_item.instantiate()
-		print("quantity " + str(quantity),position, each_item)
 		control_node.custom_minimum_size = Vector2(16,16)
 		control_node.add_child(new_item)
 		if quantity > 1:

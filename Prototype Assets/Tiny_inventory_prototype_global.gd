@@ -15,13 +15,10 @@ func store_item(item):
 		var current_number = item_numbers[position]
 		item_numbers[position] = current_number + 1
 		new_item_stored.emit(item,item_numbers[position])
-		print(stored_items,item_numbers)
 		return
 	
 	stored_items.append(item)
 	item_numbers.append(1)
 	new_item_stored.emit(item,1)
-	print(stored_items,item_numbers)
-
 
 	

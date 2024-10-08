@@ -520,8 +520,8 @@ drag_right_margin = 0.05
 drag_bottom_margin = 0.05
 
 [node name="Interaction_Aim" type="Area2D" parent="CharacterBody2D" node_paths=PackedStringArray("n_shape", "s_shape", "e_shape", "w_shape", "picking_spot")]
-collision_layer = 2
-collision_mask = 16
+collision_layer = 3
+collision_mask = 17
 script = ExtResource("7_o35hy")
 n_shape = NodePath("N")
 s_shape = NodePath("S")
