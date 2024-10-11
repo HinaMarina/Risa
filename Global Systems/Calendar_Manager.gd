@@ -10,11 +10,10 @@ func _input(event: InputEvent) -> void:
 	
 	if Input.is_action_just_released("ui_accept"):
 		update_day()
-		day_updated.emit()
 	if Input.is_action_pressed("Speed_up_Time"):
-		GlobalTimeManager.time_to_a_minute = 0.04
+		GlobalTimeManager.time_to_a_minute = 0.03
 	if Input.is_action_just_released("Speed_up_Time"):
-		GlobalTimeManager.time_to_a_minute = 4
+		GlobalTimeManager.time_to_a_minute = 3
 
 func update_day():
 	if current_day+1 <= month_size:

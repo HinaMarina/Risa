@@ -6,7 +6,7 @@ signal day_has_ended
 signal time_updated
 var real_time_in_seconds : float
 var start_time:int
-var time_to_a_minute:float = 4
+var time_to_a_minute:float = 3
 
 var game_minutes:int
 

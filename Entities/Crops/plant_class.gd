@@ -29,7 +29,7 @@ func arrange_pacing():
 		pacing = float(age_to_grow - age)/2
 	else:
 		pacing = age_to_grow - age
-		regrowth_number = 1
+		regrowth_number = 0
 		
 func calculate_next_step():
 	next_step = age + pacing
