@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqqjm8kj67r88"]
+
+[ext_resource type="Script" path="res://Entities/Player/Tools/Tool_Class.gd" id="1_pucjy"]
+[ext_resource type="Texture2D" uid="uid://jhrdj62tfmdi" path="res://Entities/Player/Tools/Standard_Tools (HM Rip).png" id="2_xtsd6"]
+
+[node name="Scissors" type="Node2D" node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_pucjy")
+tool_name = "Scissors"
+sprite = NodePath("Sprite2D")
+description = "Useful to harvest crops that grow above the soil"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_xtsd6")
+hframes = 5
+frame = 1

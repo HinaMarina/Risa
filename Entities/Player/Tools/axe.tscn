@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxqxpd18hjyvr"]
+
+[ext_resource type="Texture2D" uid="uid://jhrdj62tfmdi" path="res://Entities/Player/Tools/Standard_Tools (HM Rip).png" id="1_ppnx1"]
+[ext_resource type="Script" path="res://Entities/Player/Tools/Tool_Class.gd" id="1_yixbx"]
+
+[node name="Axe" type="Node2D" node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_yixbx")
+tool_name = "Axe"
+sprite = NodePath("Sprite2D")
+description = "Is used to cut down pieces of broken fences. Can also used at the forest to gather lumber."
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ppnx1")
+hframes = 5
+frame = 4

@@ -21,4 +21,7 @@ func store_item(item):
 	item_numbers.append(1)
 	new_item_stored.emit(item,1)
 
+func toolbag():
+	pass
+
 	

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://caku6s5he4eqj"]
+
+[ext_resource type="Script" path="res://Entities/Player/Tools/Tool_Class.gd" id="1_32ktm"]
+[ext_resource type="Texture2D" uid="uid://jhrdj62tfmdi" path="res://Entities/Player/Tools/Standard_Tools (HM Rip).png" id="2_nw7yc"]
+
+[node name="Hoe" type="Node2D" node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_32ktm")
+tool_name = "Hoe"
+sprite = NodePath("Sprite2D")
+description = "Used to clean the soil for planting the seeds. Is also used to harvest root like plants, like potatoes"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_nw7yc")
+hframes = 5
+frame = 2

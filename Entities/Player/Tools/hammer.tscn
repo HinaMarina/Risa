@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://nu0fdtnasujr"]
+
+[ext_resource type="Script" path="res://Entities/Player/Tools/Tool_Class.gd" id="1_vnqrf"]
+[ext_resource type="Texture2D" uid="uid://jhrdj62tfmdi" path="res://Entities/Player/Tools/Standard_Tools (HM Rip).png" id="2_aqvjn"]
+
+[node name="Hammer" type="Node2D" node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_vnqrf")
+tool_name = "Hammer"
+sprite = NodePath("Sprite2D")
+description = "Is used to fix fences in the ground in order to place them around the crops. Is also used to break rocks and to gather rocks at the forest.
+"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_aqvjn")
+hframes = 5
+frame = 3

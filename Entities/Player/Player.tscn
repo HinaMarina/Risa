@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://dqtkwh84ekv2u"]
+[gd_scene load_steps=42 format=3 uid="uid://dqtkwh84ekv2u"]
 
 [ext_resource type="Script" path="res://Entities/Player/State Machine/State_Machine.gd" id="1_cont1"]
 [ext_resource type="Script" path="res://Entities/Player/Player.gd" id="1_rq6fq"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c2aqykr7jxl5k" path="res://Entities/Player/Sprites/Idle_state_Mockup_static.png" id="5_sqlrm"]
 [ext_resource type="Script" path="res://Entities/Player/interaction_aim.gd" id="7_o35hy"]
 [ext_resource type="Script" path="res://Entities/Player/Player_Inventory_UI.gd" id="8_4fe0q"]
+[ext_resource type="Texture2D" uid="uid://bpfveb5gutqe2" path="res://Prototype Assets/ToolBag/Static_ToolBag_UI_Design.png" id="9_7ok2j"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t4snm"]
 radius = 5.0
@@ -605,6 +606,12 @@ Canvas = NodePath("CanvasLayer")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Inventory"]
 
+[node name="PanelContainer" type="PanelContainer" parent="Inventory/CanvasLayer"]
+texture_filter = 1
+offset_left = 2.0
+offset_right = 482.0
+offset_bottom = 272.0
+
 [node name="Container" type="Container" parent="Inventory/CanvasLayer"]
 anchors_preset = 5
 anchor_left = 0.5
@@ -634,6 +641,11 @@ columns = 5
 [node name="Control" type="Control" parent="Inventory/CanvasLayer/Container/VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
+
+[node name="Sprite2D" type="TextureRect" parent="Inventory/CanvasLayer/Container/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("9_7ok2j")
+stretch_mode = 2
 
 [node name="Clock_layer" type="CanvasLayer" parent="."]
 
