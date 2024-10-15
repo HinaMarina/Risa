@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bynkemine5m8i"]
+
+[ext_resource type="Script" path="res://Entities/Player/Tools/Tool_Class.gd" id="1_50qom"]
+[ext_resource type="Texture2D" uid="uid://b3ba33x43afwa" path="res://Entities/Player/Tools/Unequip_all_icon.png" id="2_jy3ha"]
+
+[node name="UnequipTool" type="Node2D" node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_50qom")
+tool_name = "Unequip"
+sprite = NodePath("UnequipAllIcon")
+description = "Unequip the current tool."
+
+[node name="UnequipAllIcon" type="Sprite2D" parent="."]
+texture = ExtResource("2_jy3ha")

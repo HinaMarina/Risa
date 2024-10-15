@@ -27,6 +27,7 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_released("Menu"):
 		Canvas.visible = !Canvas.visible
+		get_tree().paused = !get_tree().paused
 
 func toolbag():
 	pass

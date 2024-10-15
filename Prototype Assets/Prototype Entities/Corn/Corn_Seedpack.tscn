@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvytw5hl3i13t"]
+
+[ext_resource type="Script" path="res://Entities/Player/Tools/Seedpack_Class.gd" id="1_5uutb"]
+[ext_resource type="PackedScene" uid="uid://caqqy4wbah108" path="res://Prototype Assets/Prototype Entities/Corn/corn_seed.tscn" id="2_4qnap"]
+[ext_resource type="Texture2D" uid="uid://cufio5b4503jp" path="res://Prototype Assets/Prototype Entities/Corn/Prototypeseed_corn.png" id="2_pqy2y"]
+
+[node name="CornSeedpack" type="Node2D" node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_5uutb")
+seed_crop_scene = ExtResource("2_4qnap")
+tool_name = "Corn Seedpack"
+sprite = NodePath("Sprite2D")
+description = "A pack of corn seeds."
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_pqy2y")

@@ -1,0 +1,102 @@
+[gd_scene load_steps=10 format=3 uid="uid://isr3rwadl3da"]
+
+[ext_resource type="Texture2D" uid="uid://c0cqlitho1o4a" path="res://Prototype Assets/ToolBag/Toolbag_UI_visuals/Tools_BG_pattern.png" id="1_4eu5m"]
+[ext_resource type="Script" path="res://Entities/Player/Toolbag/Slot_grid.gd" id="2_soa01"]
+[ext_resource type="PackedScene" uid="uid://dp2d1r4s72itu" path="res://Entities/Player/Toolbag/Tool_Inventory_slot.tscn" id="3_mh6h7"]
+[ext_resource type="PackedScene" uid="uid://bynkemine5m8i" path="res://Entities/Player/Tools/unequip_tool.tscn" id="3_r6l60"]
+[ext_resource type="PackedScene" uid="uid://bh4oqwgbbllss" path="res://Entities/Player/Tools/watering_can.tscn" id="4_8feq6"]
+[ext_resource type="PackedScene" uid="uid://cqqjm8kj67r88" path="res://Entities/Player/Tools/scissors.tscn" id="5_e5h2u"]
+[ext_resource type="PackedScene" uid="uid://nu0fdtnasujr" path="res://Entities/Player/Tools/hammer.tscn" id="6_8nw5m"]
+[ext_resource type="PackedScene" uid="uid://caku6s5he4eqj" path="res://Entities/Player/Tools/hoe.tscn" id="7_ihllh"]
+[ext_resource type="PackedScene" uid="uid://dxqxpd18hjyvr" path="res://Entities/Player/Tools/axe.tscn" id="8_1ovsl"]
+
+[node name="InventoryBGtexture" type="TextureRect"]
+custom_minimum_size = Vector2(96, 48)
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("1_4eu5m")
+
+[node name="BoxContainer" type="BoxContainer" parent="."]
+layout_mode = 0
+offset_right = 96.0
+offset_bottom = 48.0
+alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 4
+script = ExtResource("2_soa01")
+
+[node name="Slot" parent="BoxContainer/GridContainer" instance=ExtResource("3_mh6h7")]
+layout_mode = 2
+focus_neighbor_right = NodePath("../Slot2")
+focus_neighbor_bottom = NodePath("../Slot5")
+
+[node name="UnequipTool" parent="BoxContainer/GridContainer/Slot" instance=ExtResource("3_r6l60")]
+position = Vector2(12, 11)
+
+[node name="Slot2" parent="BoxContainer/GridContainer" instance=ExtResource("3_mh6h7")]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Slot")
+focus_neighbor_right = NodePath("../Slot3")
+focus_neighbor_bottom = NodePath("../Slot6")
+toggle_type = true
+
+[node name="Hoe" parent="BoxContainer/GridContainer/Slot2" instance=ExtResource("7_ihllh")]
+position = Vector2(9, 14)
+
+[node name="Slot3" parent="BoxContainer/GridContainer" instance=ExtResource("3_mh6h7")]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Slot2")
+focus_neighbor_right = NodePath("../Slot4")
+focus_neighbor_bottom = NodePath("../Slot7")
+toggle_type = true
+
+[node name="Watering_can" parent="BoxContainer/GridContainer/Slot3" instance=ExtResource("4_8feq6")]
+position = Vector2(14, 12)
+
+[node name="Slot4" parent="BoxContainer/GridContainer" instance=ExtResource("3_mh6h7")]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Slot3")
+focus_neighbor_bottom = NodePath("../Slot8")
+toggle_type = true
+
+[node name="Scissors" parent="BoxContainer/GridContainer/Slot4" instance=ExtResource("5_e5h2u")]
+position = Vector2(13, 12)
+
+[node name="Slot5" parent="BoxContainer/GridContainer" instance=ExtResource("3_mh6h7")]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Slot")
+focus_neighbor_right = NodePath("../Slot6")
+toggle_type = true
+
+[node name="Hammer" parent="BoxContainer/GridContainer/Slot5" instance=ExtResource("6_8nw5m")]
+position = Vector2(11, 9)
+
+[node name="Slot6" parent="BoxContainer/GridContainer" instance=ExtResource("3_mh6h7")]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Slot5")
+focus_neighbor_top = NodePath("../Slot2")
+focus_neighbor_right = NodePath("../Slot7")
+toggle_type = true
+
+[node name="Axe" parent="BoxContainer/GridContainer/Slot6" instance=ExtResource("8_1ovsl")]
+position = Vector2(11, 11)
+
+[node name="Slot7" parent="BoxContainer/GridContainer" instance=ExtResource("3_mh6h7")]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Slot6")
+focus_neighbor_top = NodePath("../Slot3")
+focus_neighbor_right = NodePath("../Slot8")
+toggle_type = true
+
+[node name="Slot8" parent="BoxContainer/GridContainer" instance=ExtResource("3_mh6h7")]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Slot7")
+focus_neighbor_top = NodePath("../Slot4")
+toggle_type = true
