@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://dqtkwh84ekv2u"]
+[gd_scene load_steps=52 format=3 uid="uid://dqtkwh84ekv2u"]
 
 [ext_resource type="Script" path="res://Entities/Player/State Machine/State_Machine.gd" id="1_cont1"]
 [ext_resource type="Script" path="res://Entities/Player/Player.gd" id="1_rq6fq"]
@@ -9,9 +9,12 @@
 [ext_resource type="Script" path="res://Entities/Player/interaction_aim.gd" id="7_o35hy"]
 [ext_resource type="Script" path="res://Entities/Player/Player_Inventory_UI.gd" id="8_4fe0q"]
 [ext_resource type="Texture2D" uid="uid://v4rno6suy740" path="res://Prototype Assets/ToolBag/Toolbag_UI_visuals/Bag_and_Hand_Design.png" id="9_351fr"]
+[ext_resource type="PackedScene" uid="uid://cvytw5hl3i13t" path="res://Prototype Assets/Prototype Entities/Corn/Corn_Seedpack.tscn" id="9_uof2o"]
 [ext_resource type="Script" path="res://Entities/Player/Inventory_canvas.gd" id="9_xf3gc"]
 [ext_resource type="PackedScene" uid="uid://isr3rwadl3da" path="res://Entities/Player/Toolbag/Toolbag_inventory_structure.tscn" id="10_wb5kh"]
 [ext_resource type="Texture2D" uid="uid://cxyatupdfkvei" path="res://Prototype Assets/ToolBag/Toolbag_UI_visuals/slot_hover_and_focus.png" id="11_7sf6f"]
+[ext_resource type="PackedScene" uid="uid://dq1ghx5ied6wg" path="res://Entities/Player/Toolbag/seeds_inventory_Structure.tscn" id="11_rpd38"]
+[ext_resource type="Texture2D" uid="uid://l54x0nk0g5in" path="res://Prototype Assets/ToolBag/Toolbag_UI_visuals/Selection_Label.png" id="12_aovfk"]
 [ext_resource type="Texture2D" uid="uid://ba7niidwtxhbj" path="res://Prototype Assets/ToolBag/Toolbag_UI_visuals/Seed_selected.png" id="12_erfth"]
 [ext_resource type="Script" path="res://Entities/Player/Toolbag/tool_seed_button.gd" id="13_ef4qf"]
 [ext_resource type="Texture2D" uid="uid://bfuspdqdw5uaq" path="res://Prototype Assets/ToolBag/Toolbag_UI_visuals/Tool_selected.png" id="14_t1x73"]
@@ -457,6 +460,18 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tqo13"]
 
+[sub_resource type="FontFile" id="FontFile_0ttxr"]
+cache/0/10/0/ascent = 0.0
+cache/0/10/0/descent = 0.0
+cache/0/10/0/underline_position = 0.0
+cache/0/10/0/underline_thickness = 0.0
+cache/0/10/0/scale = 1.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
 [sub_resource type="FontFile" id="FontFile_83dt8"]
 subpixel_positioning = 0
 msdf_pixel_range = 14
@@ -609,15 +624,20 @@ position = Vector2(0, -45)
 [node name="Inventory" type="Node2D" parent="." node_paths=PackedStringArray("Canvas")]
 process_mode = 3
 script = ExtResource("8_4fe0q")
-Canvas = NodePath("CanvasLayer")
+Canvas = NodePath("Inventory_canvas")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Inventory" node_paths=PackedStringArray("Tool_Inventory_BG", "Tool_Inventory_grid", "Hand_texture_placement")]
+[node name="Inventory_canvas" type="CanvasLayer" parent="Inventory" node_paths=PackedStringArray("Tool_Inventory_BG", "Tool_Inventory_grid", "Seed_Inventory_BG", "Seed_Inventory_grid", "Hand_texture_placement", "item_selection_label", "ToolxSeed_Button", "item_info_label")]
 script = ExtResource("9_xf3gc")
 Tool_Inventory_BG = NodePath("InventoryBGtexture")
 Tool_Inventory_grid = NodePath("InventoryBGtexture/BoxContainer/GridContainer")
+Seed_Inventory_BG = NodePath("Seeds_Inventory_BG")
+Seed_Inventory_grid = NodePath("Seeds_Inventory_BG/BoxContainer/SeedGridContainer")
 Hand_texture_placement = NodePath("BoxContainer/TextureRect/Container/Hand_item_texture")
+item_selection_label = NodePath("BoxContainer/TextureRect/TextureRect/item_selection_label")
+ToolxSeed_Button = NodePath("ToolSeed_button")
+item_info_label = NodePath("ReferenceRect/MarginContainer/item_info_label")
 
-[node name="PanelContainer" type="PanelContainer" parent="Inventory/CanvasLayer"]
+[node name="PanelContainer" type="PanelContainer" parent="Inventory/Inventory_canvas"]
 modulate = Color(0.32, 0.32, 0.32, 0.709804)
 texture_filter = 1
 anchors_preset = 15
@@ -627,25 +647,56 @@ offset_right = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="InventoryBGtexture" parent="Inventory/CanvasLayer" instance=ExtResource("10_wb5kh")]
+[node name="InventoryBGtexture" parent="Inventory/Inventory_canvas" instance=ExtResource("10_wb5kh")]
 offset_left = 172.0
 offset_top = 123.0
 offset_right = 268.0
 offset_bottom = 171.0
 
-[node name="Button" parent="Inventory/CanvasLayer/InventoryBGtexture/BoxContainer/GridContainer/Slot" index="0"]
+[node name="Button" parent="Inventory/Inventory_canvas/InventoryBGtexture/BoxContainer/GridContainer/Slot" index="0"]
 focus_neighbor_top = NodePath("../../../../../ToolSeed_button")
 
-[node name="Button" parent="Inventory/CanvasLayer/InventoryBGtexture/BoxContainer/GridContainer/Slot2" index="0"]
+[node name="Button" parent="Inventory/Inventory_canvas/InventoryBGtexture/BoxContainer/GridContainer/Slot2" index="0"]
 focus_neighbor_top = NodePath("../../../../../ToolSeed_button")
 
-[node name="Button" parent="Inventory/CanvasLayer/InventoryBGtexture/BoxContainer/GridContainer/Slot3" index="0"]
+[node name="Button" parent="Inventory/Inventory_canvas/InventoryBGtexture/BoxContainer/GridContainer/Slot3" index="0"]
 focus_neighbor_top = NodePath("../../../../../ToolSeed_button")
 
-[node name="Button" parent="Inventory/CanvasLayer/InventoryBGtexture/BoxContainer/GridContainer/Slot4" index="0"]
+[node name="Button" parent="Inventory/Inventory_canvas/InventoryBGtexture/BoxContainer/GridContainer/Slot4" index="0"]
 focus_neighbor_top = NodePath("../../../../../ToolSeed_button")
 
-[node name="BoxContainer" type="BoxContainer" parent="Inventory/CanvasLayer"]
+[node name="Seeds_Inventory_BG" parent="Inventory/Inventory_canvas" instance=ExtResource("11_rpd38")]
+visible = false
+custom_minimum_size = Vector2(96, 48)
+offset_left = 172.0
+offset_top = 123.0
+offset_right = -212.0
+offset_bottom = -99.0
+
+[node name="Button" parent="Inventory/Inventory_canvas/Seeds_Inventory_BG/BoxContainer/SeedGridContainer/Slot" index="0"]
+focus_neighbor_top = NodePath("../../../../../ToolSeed_button")
+
+[node name="CornSeedpack" parent="Inventory/Inventory_canvas/Seeds_Inventory_BG/BoxContainer/SeedGridContainer/Slot" index="2" instance=ExtResource("9_uof2o")]
+
+[node name="Button" parent="Inventory/Inventory_canvas/Seeds_Inventory_BG/BoxContainer/SeedGridContainer/Slot2" index="0"]
+focus_neighbor_top = NodePath("../../../../../ToolSeed_button")
+
+[node name="CornSeedpack2" parent="Inventory/Inventory_canvas/Seeds_Inventory_BG/BoxContainer/SeedGridContainer/Slot2" index="2" instance=ExtResource("9_uof2o")]
+position = Vector2(-16, 0)
+
+[node name="Button" parent="Inventory/Inventory_canvas/Seeds_Inventory_BG/BoxContainer/SeedGridContainer/Slot3" index="0"]
+focus_neighbor_top = NodePath("../../../../../ToolSeed_button")
+
+[node name="Button" parent="Inventory/Inventory_canvas/Seeds_Inventory_BG/BoxContainer/SeedGridContainer/Slot4" index="0"]
+focus_neighbor_top = NodePath("../../../../../ToolSeed_button")
+
+[node name="Button" parent="Inventory/Inventory_canvas/Seeds_Inventory_BG/BoxContainer/SeedGridContainer/Slot5" index="0"]
+focus_neighbor_top = NodePath("../../../../../ToolSeed_button")
+
+[node name="Button" parent="Inventory/Inventory_canvas/Seeds_Inventory_BG/BoxContainer/SeedGridContainer/Slot6" index="0"]
+focus_neighbor_top = NodePath("../../../../../ToolSeed_button")
+
+[node name="BoxContainer" type="BoxContainer" parent="Inventory/Inventory_canvas"]
 custom_minimum_size = Vector2(204, 196)
 anchors_preset = 8
 anchor_left = 0.5
@@ -660,21 +711,40 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Inventory/CanvasLayer/BoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="Inventory/Inventory_canvas/BoxContainer"]
 layout_mode = 2
 texture = ExtResource("9_351fr")
 
-[node name="Container" type="CenterContainer" parent="Inventory/CanvasLayer/BoxContainer/TextureRect"]
+[node name="Container" type="CenterContainer" parent="Inventory/Inventory_canvas/BoxContainer/TextureRect"]
 layout_mode = 0
 offset_left = 177.0
 offset_top = 48.0
 offset_right = 199.0
 offset_bottom = 70.0
 
-[node name="Hand_item_texture" type="Sprite2D" parent="Inventory/CanvasLayer/BoxContainer/TextureRect/Container"]
+[node name="Hand_item_texture" type="Sprite2D" parent="Inventory/Inventory_canvas/BoxContainer/TextureRect/Container"]
 position = Vector2(11, 11)
 
-[node name="ToolSeed_button" type="TextureButton" parent="Inventory/CanvasLayer"]
+[node name="TextureRect" type="TextureRect" parent="Inventory/Inventory_canvas/BoxContainer/TextureRect"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 148.0
+offset_right = 140.0
+offset_bottom = 176.0
+texture = ExtResource("12_aovfk")
+stretch_mode = 2
+
+[node name="item_selection_label" type="Label" parent="Inventory/Inventory_canvas/BoxContainer/TextureRect/TextureRect"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 7.0
+offset_right = 108.0
+offset_bottom = 21.0
+theme_override_fonts/font = SubResource("FontFile_0ttxr")
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 1
+
+[node name="ToolSeed_button" type="TextureButton" parent="Inventory/Inventory_canvas"]
 offset_left = 170.0
 offset_top = 103.0
 offset_right = 271.0
@@ -685,6 +755,28 @@ texture_normal = ExtResource("14_t1x73")
 texture_pressed = ExtResource("12_erfth")
 texture_focused = ExtResource("11_7sf6f")
 script = ExtResource("13_ef4qf")
+
+[node name="ReferenceRect" type="Panel" parent="Inventory/Inventory_canvas"]
+offset_left = 304.0
+offset_top = 122.0
+offset_right = 400.0
+offset_bottom = 162.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Inventory/Inventory_canvas/ReferenceRect"]
+layout_mode = 0
+offset_right = 96.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="item_info_label" type="Label" parent="Inventory/Inventory_canvas/ReferenceRect/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 5
+horizontal_alignment = 3
+autowrap_mode = 3
+justification_flags = 35
 
 [node name="Clock_layer" type="CanvasLayer" parent="."]
 
@@ -736,12 +828,20 @@ text = "month/year"
 horizontal_alignment = 1
 
 [connection signal="area_entered" from="CharacterBody2D/Interaction_Aim" to="CharacterBody2D/Interaction_Aim" method="_on_area_entered"]
-[connection signal="focus_entered" from="Inventory/CanvasLayer/ToolSeed_button" to="Inventory/CanvasLayer/ToolSeed_button" method="_on_focus_entered"]
-[connection signal="focus_exited" from="Inventory/CanvasLayer/ToolSeed_button" to="Inventory/CanvasLayer/ToolSeed_button" method="_on_focus_exited"]
-[connection signal="visibility_changed" from="Inventory/CanvasLayer/ToolSeed_button" to="Inventory/CanvasLayer/ToolSeed_button" method="_on_visibility_changed"]
+[connection signal="focus_entered" from="Inventory/Inventory_canvas/ToolSeed_button" to="Inventory/Inventory_canvas/ToolSeed_button" method="_on_focus_entered"]
+[connection signal="focus_exited" from="Inventory/Inventory_canvas/ToolSeed_button" to="Inventory/Inventory_canvas/ToolSeed_button" method="_on_focus_exited"]
+[connection signal="toggled" from="Inventory/Inventory_canvas/ToolSeed_button" to="Inventory/Inventory_canvas" method="_on_tool_seed_button_toggled"]
+[connection signal="visibility_changed" from="Inventory/Inventory_canvas/ToolSeed_button" to="Inventory/Inventory_canvas/ToolSeed_button" method="_on_visibility_changed"]
 
-[editable path="Inventory/CanvasLayer/InventoryBGtexture"]
-[editable path="Inventory/CanvasLayer/InventoryBGtexture/BoxContainer/GridContainer/Slot"]
-[editable path="Inventory/CanvasLayer/InventoryBGtexture/BoxContainer/GridContainer/Slot2"]
-[editable path="Inventory/CanvasLayer/InventoryBGtexture/BoxContainer/GridContainer/Slot3"]
-[editable path="Inventory/CanvasLayer/InventoryBGtexture/BoxContainer/GridContainer/Slot4"]
+[editable path="Inventory/Inventory_canvas/InventoryBGtexture"]
+[editable path="Inventory/Inventory_canvas/InventoryBGtexture/BoxContainer/GridContainer/Slot"]
+[editable path="Inventory/Inventory_canvas/InventoryBGtexture/BoxContainer/GridContainer/Slot2"]
+[editable path="Inventory/Inventory_canvas/InventoryBGtexture/BoxContainer/GridContainer/Slot3"]
+[editable path="Inventory/Inventory_canvas/InventoryBGtexture/BoxContainer/GridContainer/Slot4"]
+[editable path="Inventory/Inventory_canvas/Seeds_Inventory_BG"]
+[editable path="Inventory/Inventory_canvas/Seeds_Inventory_BG/BoxContainer/SeedGridContainer/Slot"]
+[editable path="Inventory/Inventory_canvas/Seeds_Inventory_BG/BoxContainer/SeedGridContainer/Slot2"]
+[editable path="Inventory/Inventory_canvas/Seeds_Inventory_BG/BoxContainer/SeedGridContainer/Slot3"]
+[editable path="Inventory/Inventory_canvas/Seeds_Inventory_BG/BoxContainer/SeedGridContainer/Slot4"]
+[editable path="Inventory/Inventory_canvas/Seeds_Inventory_BG/BoxContainer/SeedGridContainer/Slot5"]
+[editable path="Inventory/Inventory_canvas/Seeds_Inventory_BG/BoxContainer/SeedGridContainer/Slot6"]

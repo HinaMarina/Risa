@@ -2,9 +2,10 @@ class_name Slot extends Control
 var item:Node2D
 signal slot_equip(item:Node,slot:Slot)
 signal slot_info(item:Node,slot:Slot)
-signal slot_off
+signal slot_off(item:Node,slot:Slot)
 @export var toggle_type:bool
 var slotbutton:Button
+var quantity:Label
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,6 +16,9 @@ func _ready() -> void:
 		if child is Button:
 			slotbutton = child
 			slotbutton.toggle_mode = toggle_type
+		if child is Label:
+			quantity = child
+			quantity.global_position = global_position + Vector2(0,6)
 	if toggle_type and slotbutton!=null:
 		slotbutton.toggled.connect(_on_button_toggled)
 	elif slotbutton!= null:
@@ -32,7 +36,7 @@ func _on_button_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		slot_equip.emit(item,self)
 	if toggled_on == false:
-		slot_off.emit()
+		slot_off.emit(item,self)
 
 
 

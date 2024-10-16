@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3 uid="uid://bg7i6jgy4xxwl"]
+
+[ext_resource type="Script" path="res://Entities/Player/Toolbag/tool_inventory_slot.gd" id="1_s6euq"]
+[ext_resource type="Texture2D" uid="uid://cxyatupdfkvei" path="res://Prototype Assets/ToolBag/Toolbag_UI_visuals/slot_hover_and_focus.png" id="2_qyfyg"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k1wgv"]
+texture = ExtResource("2_qyfyg")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ojry4"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7eqfb"]
+
+[node name="Slot" type="Control"]
+clip_contents = true
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -464.0
+offset_bottom = -254.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+script = ExtResource("1_s6euq")
+toggle_type = true
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(14, 14)
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 15.0
+offset_bottom = 15.0
+theme_override_styles/focus = SubResource("StyleBoxTexture_k1wgv")
+theme_override_styles/hover = SubResource("StyleBoxTexture_k1wgv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ojry4")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7eqfb")
+toggle_mode = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_top = 6.0
+offset_right = 16.0
+offset_bottom = 18.0
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
+[connection signal="focus_entered" from="Button" to="." method="_on_button_focus_entered"]
