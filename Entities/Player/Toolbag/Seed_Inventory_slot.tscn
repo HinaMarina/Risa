@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bg7i6jgy4xxwl"]
 
-[ext_resource type="Script" path="res://Entities/Player/Toolbag/tool_inventory_slot.gd" id="1_s6euq"]
+[ext_resource type="Script" path="res://Entities/Player/Toolbag/Seed_inventory_slot.gd" id="1_1w12t"]
 [ext_resource type="Texture2D" uid="uid://cxyatupdfkvei" path="res://Prototype Assets/ToolBag/Toolbag_UI_visuals/slot_hover_and_focus.png" id="2_qyfyg"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k1wgv"]
@@ -28,8 +28,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
-script = ExtResource("1_s6euq")
-toggle_type = true
+script = ExtResource("1_1w12t")
 
 [node name="Button" type="Button" parent="."]
 custom_minimum_size = Vector2(14, 14)

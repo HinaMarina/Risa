@@ -23,3 +23,4 @@ func _on_button_toggled(toggled_on: bool,button:Button) -> void:
 		for each_button in all_buttons:
 			if each_button != current_toggled && each_button.button_pressed == true:
 				each_button.button_pressed = false
+	
