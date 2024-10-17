@@ -22,6 +22,9 @@ func _ready() -> void:
 			#control_node.add_child(label)
 		#inventory_grid.add_child(control_node)
 
+func Seed_inventory():
+	pass
+
 	
 
 func _input(event: InputEvent) -> void:

@@ -42,5 +42,4 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_ojry4")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_7eqfb")
 toggle_mode = true
 
-[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
 [connection signal="focus_entered" from="Button" to="." method="_on_button_focus_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://dqtkwh84ekv2u"]
+[gd_scene load_steps=51 format=3 uid="uid://dqtkwh84ekv2u"]
 
 [ext_resource type="Script" path="res://Entities/Player/State Machine/State_Machine.gd" id="1_cont1"]
 [ext_resource type="Script" path="res://Entities/Player/Player.gd" id="1_rq6fq"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" path="res://Entities/Player/interaction_aim.gd" id="7_o35hy"]
 [ext_resource type="Script" path="res://Entities/Player/Player_Inventory_UI.gd" id="8_4fe0q"]
 [ext_resource type="Texture2D" uid="uid://v4rno6suy740" path="res://Prototype Assets/ToolBag/Toolbag_UI_visuals/Bag_and_Hand_Design.png" id="9_351fr"]
-[ext_resource type="PackedScene" uid="uid://cvytw5hl3i13t" path="res://Prototype Assets/Prototype Entities/Corn/Corn_Seedpack.tscn" id="9_uof2o"]
 [ext_resource type="Script" path="res://Entities/Player/Inventory_canvas.gd" id="9_xf3gc"]
 [ext_resource type="PackedScene" uid="uid://isr3rwadl3da" path="res://Entities/Player/Toolbag/Toolbag_inventory_structure.tscn" id="10_wb5kh"]
 [ext_resource type="Texture2D" uid="uid://cxyatupdfkvei" path="res://Prototype Assets/ToolBag/Toolbag_UI_visuals/slot_hover_and_focus.png" id="11_7sf6f"]
@@ -679,13 +678,8 @@ offset_bottom = -99.0
 [node name="Button" parent="Inventory/Inventory_canvas/Seeds_Inventory_BG/BoxContainer/SeedGridContainer/Slot" index="0"]
 focus_neighbor_top = NodePath("../../../../../ToolSeed_button")
 
-[node name="CornSeedpack" parent="Inventory/Inventory_canvas/Seeds_Inventory_BG/BoxContainer/SeedGridContainer/Slot" index="2" instance=ExtResource("9_uof2o")]
-
 [node name="Button" parent="Inventory/Inventory_canvas/Seeds_Inventory_BG/BoxContainer/SeedGridContainer/Slot2" index="0"]
 focus_neighbor_top = NodePath("../../../../../ToolSeed_button")
-
-[node name="CornSeedpack2" parent="Inventory/Inventory_canvas/Seeds_Inventory_BG/BoxContainer/SeedGridContainer/Slot2" index="2" instance=ExtResource("9_uof2o")]
-position = Vector2(-16, 0)
 
 [node name="Button" parent="Inventory/Inventory_canvas/Seeds_Inventory_BG/BoxContainer/SeedGridContainer/Slot3" index="0"]
 focus_neighbor_top = NodePath("../../../../../ToolSeed_button")

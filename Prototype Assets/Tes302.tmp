@@ -51,15 +51,14 @@ position = Vector2(284, -59)
 position = Vector2(302, -59)
 
 [node name="Corn_Seedpack" type="TextureButton" parent="."]
-offset_right = 16.0
-offset_bottom = 16.0
+offset_right = 40.0
+offset_bottom = 40.0
 texture_normal = ExtResource("6_nehkv")
 texture_pressed = ExtResource("6_nehkv")
 
 [node name="Sunflower_Seedpack" type="TextureButton" parent="."]
-offset_left = 26.0
-offset_right = 42.0
-offset_bottom = 16.0
+offset_right = 40.0
+offset_bottom = 40.0
 texture_normal = ExtResource("7_5mp36")
 texture_pressed = ExtResource("7_5mp36")
 

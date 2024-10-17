@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 GlobalTimeManager="*res://Global Systems/Global_Time_Manager.gd"
 CalendarManager="*res://Global Systems/Calendar_Manager.gd"
 TinyInventoryPrototypeGlobal="*res://Prototype Assets/Tiny_inventory_prototype_global.gd"
+SeedInventoryManager="*res://Global Systems/Seed_Inventory_ Manager.gd"
 
 [display]
 

@@ -15,10 +15,10 @@ var item_on_hand : Node
 var all_tool_slots : Array[Slot]
 var all_seed_slots : Array[Slot]
 # Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
 	all_tool_slots = Tool_Inventory_grid.all_slots
 	all_seed_slots = Seed_Inventory_grid.all_slots
-	print(all_seed_slots == all_tool_slots)
 	for slot in all_tool_slots:
 		slot.slot_equip.connect(_on_slot_slot_equip)
 		slot.slot_info.connect(display_item_info)
@@ -27,6 +27,7 @@ func _ready() -> void:
 		slot.slot_equip.connect(_on_slot_slot_equip)
 		slot.slot_info.connect(display_item_info)
 		slot.slot_off.connect(_on_slot_off)
+	SeedInventoryManager.set_slots_in_manager(all_seed_slots)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
