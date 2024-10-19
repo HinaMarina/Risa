@@ -13,12 +13,9 @@ func on_seedpack_aquisition(newitem:PackedScene,newquantity:int):
 	last_pack = newitem
 	for slot in all_seed_slots:
 		if slot.item == null:
-			print(slot.item)
 			slot.add_item(item,newquantity)
 			return
 		if item.tool_name == slot.item.tool_name && slot.is_full == false:
-			print(item.tool_name,slot.item.tool_name)
-			print('printacá')
 			slot.add_item(item,newquantity)
 			return
 			

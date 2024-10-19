@@ -1,5 +1,5 @@
 extends GridContainer
-var current_toggled : Button
+var current_pressed : Button
 var all_buttons:Array[Button]
 var all_slots:Array[Slot]
 
@@ -18,9 +18,16 @@ func _ready() -> void:
 			
 func _on_button_toggled(toggled_on: bool,button:Button) -> void:
 	if toggled_on == true:
-		if current_toggled != button:
-			current_toggled = button
-		for each_button in all_buttons:
-			if each_button != current_toggled && each_button.button_pressed == true:
-				each_button.button_pressed = false
+		var button_slot = button.get_parent() as Slot
+		for each in all_slots:
+			if each != button_slot and each.slotbutton.button_pressed == true and button.toggle_mode:
+				await button_slot.swap_item(each)
+				button.button_pressed = false
+				each.slotbutton.button_pressed = false
+		current_pressed = button
 	
+	else:
+		if button == current_pressed:
+			var slot = button.get_parent() as Slot
+			slot.equip(true)
+			current_pressed = null
