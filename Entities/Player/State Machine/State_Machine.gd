@@ -10,19 +10,19 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	is_idle()
 	current_state.do()
 
 			
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	current_state.physics_do()
 	
 func is_idle():
 	if !Input.is_action_pressed("movement_action"):
 		set_state(Idle_state)
 		
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	if Input.is_action_pressed("movement_action"): #custom input that identifies every directional button
 		if can_player_move:
 			set_state(Run_state)

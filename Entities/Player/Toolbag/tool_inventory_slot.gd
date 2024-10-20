@@ -3,7 +3,6 @@ class_name Slot extends Control
 signal slot_equip(item:Node,slot:Slot)
 signal slot_info(item:Node,slot:Slot)
 signal slot_off(item:Node,slot:Slot)
-signal slot_swaped()
 var item_saved:Node2D
 var move_item:bool
 @export var toggle_type:bool
@@ -55,7 +54,7 @@ func equip(will_equip:bool):
 		slot_equip.emit(item,self)
 	else:
 		slot_off.emit(item,self)
-func save_item(item:Node2D):
+func save_item(_item:Node2D):
 	item_saved = item
 	
 

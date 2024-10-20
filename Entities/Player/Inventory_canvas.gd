@@ -28,13 +28,8 @@ func _ready() -> void:
 		slot.slot_info.connect(display_item_info)
 		slot.slot_off.connect(_on_slot_off)
 	SeedInventoryManager.set_slots_in_manager(all_seed_slots)
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 	
-func display_item_info(item:Node, slot:Slot):
+func display_item_info(item:Node, _slot:Slot):
 	if item is tool:
 		item_selection_label.text = item.tool_name
 		item_info_label.text = item.description
@@ -42,7 +37,7 @@ func display_item_info(item:Node, slot:Slot):
 		item_selection_label.text = ""
 		item_info_label.text = ""
 
-func _on_slot_slot_equip(item: Node, slot: Slot) -> void:
+func _on_slot_slot_equip(item: Node, _slot: Slot) -> void:
 	if item != null:
 		item_on_hand = item
 		Hand_texture_placement.texture = item.sprite.texture
@@ -52,7 +47,7 @@ func _on_slot_slot_equip(item: Node, slot: Slot) -> void:
 			item_on_hand = null
 			Hand_texture_placement.texture = null
 			
-func _on_slot_off(item:Node,slot:Slot):
+func _on_slot_off(item:Node,_slot:Slot):
 	if item == item_on_hand:
 		Hand_texture_placement.texture = null
 

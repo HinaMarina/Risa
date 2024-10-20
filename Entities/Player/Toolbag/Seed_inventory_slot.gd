@@ -74,6 +74,8 @@ func add_item(new_item:Node,new_quantity:int):
 			quantity_label.text = str(quantity)
 			if quantity <= 1:
 				quantity_label.visible = false
+			else:
+				quantity_label.visible = true
 		else:
 			quantity += new_quantity
 			quantity_label.text = str(quantity)
@@ -83,7 +85,8 @@ func add_item(new_item:Node,new_quantity:int):
 				is_full = true
 	else:
 		slot_is_full.emit(new_item,self,new_quantity)
-		
+
+			
 func remove_item(number_to_remove:int):
 	if quantity >= number_to_remove && item != null:
 		quantity -= number_to_remove

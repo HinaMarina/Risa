@@ -17,7 +17,7 @@ func _ready() -> void:
 	CalendarManager.day_updated.connect(on_day_updated)
 	time_updated.emit()
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	real_time_in_seconds = float(Time.get_ticks_msec() - start_time)/1000
 	real_time_to_game_time()
 	

@@ -12,7 +12,7 @@ var all_shapes:Array
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	if picking_spot.get_child_count()>0:
 		enable_store = true
 	else:
@@ -27,7 +27,7 @@ func _ready() -> void:
 		if child is CollisionShape2D:
 			all_shapes.append(child)
 	TinyInventoryPrototypeGlobal.item_pickup.connect(picked_up)
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_pressed("movement_action"):
 		if Input.is_action_pressed("ui_up"):
 			for shape in all_shapes:
@@ -55,7 +55,7 @@ func _process(delta: float) -> void:
 					shape.disabled = true
 
 
-func _on_area_entered(area: Area2D) -> void:
+func _on_area_entered(_area: Area2D) -> void:
 	pass # Replace with function body.
 	
 func picked_up(item:PackedScene):
