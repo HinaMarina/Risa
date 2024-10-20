@@ -24,6 +24,12 @@ func _on_button_toggled(toggled_on: bool,button:Button) -> void:
 				await button_slot.swap_item(each)
 				button.button_pressed = false
 				each.slotbutton.button_pressed = false
+			elif button_slot.item != null:
+				if button_slot.item.tool_name == "Unequip":
+					for slot in all_slots:
+						slot.slot_off.emit(slot.item,slot)
+						current_pressed = null
+					return
 		current_pressed = button
 	
 	else:
