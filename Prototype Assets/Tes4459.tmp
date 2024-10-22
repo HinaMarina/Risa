@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=3 uid="uid://dk1d11xmoacf5"]
+
+[ext_resource type="PackedScene" uid="uid://dqtkwh84ekv2u" path="res://Entities/Player/Player.tscn" id="1_ekd6t"]
+[ext_resource type="Script" path="res://Prototype Assets/testing_scene_empty.gd" id="1_hdjox"]
+[ext_resource type="PackedScene" uid="uid://cvytw5hl3i13t" path="res://Prototype Assets/Prototype Entities/Corn/Corn_Seedpack.tscn" id="2_hhed5"]
+[ext_resource type="Texture2D" uid="uid://c4b6tky1kbisp" path="res://icon.svg" id="2_nkolr"]
+[ext_resource type="PackedScene" uid="uid://dnf2ksx7ksbho" path="res://Prototype Assets/Prototype Entities/Sunflower/Sunflower_Seedpack.tscn" id="3_wjsly"]
+[ext_resource type="PackedScene" uid="uid://caqqy4wbah108" path="res://Prototype Assets/Prototype Entities/Corn/corn_seed.tscn" id="4_jnq8l"]
+[ext_resource type="PackedScene" uid="uid://dkjwa5l2qvs71" path="res://Prototype Assets/Prototype Entities/Sunflower/SunflowerSeed.tscn" id="5_o338d"]
+[ext_resource type="Texture2D" uid="uid://cufio5b4503jp" path="res://Prototype Assets/Prototype Entities/Corn/Prototypeseed_corn.png" id="6_nehkv"]
+[ext_resource type="Texture2D" uid="uid://3qsxqxlv038e" path="res://Prototype Assets/Prototype Entities/Sunflower/Prototypeseed_Sunflower.png" id="7_5mp36"]
+
+[node name="Node2D" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_hdjox")
+corn_seedpack = ExtResource("2_hhed5")
+sunflower_seedpack = ExtResource("3_wjsly")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(246, 114)
+texture = ExtResource("2_nkolr")
+
+[node name="Player" parent="." instance=ExtResource("1_ekd6t")]
+position = Vector2(78, 22)
+
+[node name="CornSeed" parent="." instance=ExtResource("4_jnq8l")]
+position = Vector2(216, -16)
+
+[node name="CornSeed2" parent="." instance=ExtResource("4_jnq8l")]
+position = Vector2(324, 9)
+
+[node name="CornSeed3" parent="." instance=ExtResource("4_jnq8l")]
+position = Vector2(180, -16)
+
+[node name="SunflowerSeed" parent="." instance=ExtResource("5_o338d")]
+position = Vector2(198, -16)
+
+[node name="SunflowerSeed2" parent="." instance=ExtResource("5_o338d")]
+position = Vector2(216, 0)
+
+[node name="SunflowerSeed3" parent="." instance=ExtResource("5_o338d")]
+position = Vector2(234, -16)
+
+[node name="SunflowerSeed4" parent="." instance=ExtResource("5_o338d")]
+position = Vector2(324, -7)
+
+[node name="SunflowerSeed5" parent="." instance=ExtResource("5_o338d")]
+position = Vector2(284, -59)
+
+[node name="SunflowerSeed6" parent="." instance=ExtResource("5_o338d")]
+position = Vector2(302, -59)
+
+[node name="Corn_Seedpack" type="TextureButton" parent="."]
+offset_right = 16.0
+offset_bottom = 16.0
+texture_normal = ExtResource("6_nehkv")
+texture_pressed = ExtResource("6_nehkv")
+
+[node name="Sunflower_Seedpack" type="TextureButton" parent="."]
+offset_left = 26.0
+offset_right = 42.0
+offset_bottom = 16.0
+texture_normal = ExtResource("7_5mp36")
+texture_pressed = ExtResource("7_5mp36")
+
+[connection signal="pressed" from="Corn_Seedpack" to="." method="_on_corn_seedpack_pressed"]
+[connection signal="pressed" from="Sunflower_Seedpack" to="." method="_on_sunflower_seedpack_pressed"]

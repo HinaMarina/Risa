@@ -52,8 +52,8 @@ func enable_harvest():
 
 		
 func harvest():
-	TinyInventoryPrototypeGlobal.on_picking_item(harvested_plant)
-	TinyInventoryPrototypeGlobal.number_of_harvested += 1
+	ItemPickManager.on_picking_item(harvested_plant)
+	ItemPickManager.number_of_harvested += 1
 	if regrowth_number <= 0:
 		self.queue_free()	
 	else:

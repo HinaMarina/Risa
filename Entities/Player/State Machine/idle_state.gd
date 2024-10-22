@@ -1,22 +1,19 @@
 extends State
 
-func _ready() -> void:
-	super()
-	set_state_assets()
-
+@export var normal_idle_texture:Texture
+@export var holding_idle_texture:Texture
+var holding_something :bool
 
 func do():
 	super()
 	sets_animation()
 
-func set_state_assets():
-	for child in self.get_children():
-		if child is AnimationTree:
-			animation_tree = child
-		if child is AnimationPlayer:
-			animation_player = child
-		if child is Sprite2D:
-			sprite = child
+func holding_something_setter(value:bool):
+	holding_something = value
 			
 func sets_animation():
+	if holding_something:
+		sprite.texture = holding_idle_texture
+	else:
+		sprite.texture = normal_idle_texture
 	animation_tree.set("parameters/blend_position",input_vector)

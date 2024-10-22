@@ -4,10 +4,10 @@ var is_in_stairs:bool
 
 @export var MAX_SPEED:float = 100
 @export var acceleration:float = 40
+@export var holding_run_texture:Texture
+@export var normal_run_texture:Texture
 
-func _ready() -> void:
-	super()
-	set_state_assets()
+var holding_something:bool
 	
 func do():
 	super()
@@ -16,7 +16,9 @@ func do():
 func physics_do():
 	super()
 	move()
-
+	
+func holding_something_setter(value:bool):
+	holding_something = value
 
 func set_state_assets():
 	for child in self.get_children():
@@ -52,4 +54,9 @@ func fixing_input_vector_angles (input_vector:Vector2):
 			return Vector2.from_angle(PI - (0.46364))
 			
 func sets_animation():
+	if holding_something:
+		sprite.texture = holding_run_texture
+	else:
+		sprite.texture = normal_run_texture
+		
 	animation_tree.set("parameters/blend_position",input_vector)

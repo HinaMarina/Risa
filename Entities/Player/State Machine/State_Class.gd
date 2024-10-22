@@ -26,6 +26,7 @@ func _ready() -> void:
 	var parent_node = self.get_parent()
 	if parent_node is State:
 		parent_state = parent_node
+	set_state_assets()
 
 func pause_movement():
 	can_player_move = false
@@ -50,5 +51,15 @@ func set_state(new_state:State):
 		if current_state!=null:
 			current_state.complete()
 		current_state = new_state
+		current_state.visible = true
 		current_state.enter()
+
+func set_state_assets():
+	for child in self.get_children():
+		if child is AnimationTree:
+			animation_tree = child
+		if child is AnimationPlayer:
+			animation_player = child
+		if child is Sprite2D:
+			sprite = child
 		
