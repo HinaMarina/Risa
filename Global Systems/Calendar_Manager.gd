@@ -4,8 +4,8 @@ extends Node
 @onready var current_month:int = 1
 signal day_updated(day,month)
 var month_size:int = 28
-var current_week = func week(): return int(current_day/7)
 @warning_ignore("integer_division")
+var current_week = func week(): return int(current_day/7)
 	
 func _input(_event: InputEvent) -> void:
 	

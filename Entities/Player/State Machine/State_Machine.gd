@@ -60,9 +60,11 @@ func update_state_input_vector():
 		each.input_vector = input_vector
 		
 func harvesting_requisition(item:PackedScene):
-	can_player_move = false
-	Harvesting_state.item_harvested = item
-	set_state(Harvesting_state)
+	ItemPickManager.harvest_answer.emit(!is_holding)
+	if !is_holding:
+		can_player_move = false
+		Harvesting_state.item_harvested = item
+		set_state(Harvesting_state)
 	
 func finished_harvesting(item:Node2D):
 	can_player_move = true

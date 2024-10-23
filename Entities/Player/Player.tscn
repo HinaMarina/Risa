@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=3 uid="uid://dqtkwh84ekv2u"]
+[gd_scene load_steps=107 format=3 uid="uid://dqtkwh84ekv2u"]
 
 [ext_resource type="Script" path="res://Entities/Player/State Machine/State_Machine.gd" id="1_cont1"]
 [ext_resource type="Script" path="res://Entities/Player/Player.gd" id="1_rq6fq"]
@@ -1424,7 +1424,13 @@ _data = {
 "W": SubResource("Animation_sj1u1")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tqo13"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_8jttq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sp7xx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nk218"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o1vnj"]
 
 [sub_resource type="FontFile" id="FontFile_0ttxr"]
 subpixel_positioning = 0
@@ -1561,6 +1567,7 @@ hframes = 12
 vframes = 3
 
 [node name="Throwing_State" type="Node2D" parent="CharacterBody2D/State_Machine" node_paths=PackedStringArray("throwing_spot", "body")]
+visible = false
 script = ExtResource("9_i64eu")
 throwing_spot = NodePath("Throwing_spot")
 body = NodePath("../..")
@@ -1585,7 +1592,7 @@ hframes = 6
 [node name="Throwing_spot" type="Node2D" parent="CharacterBody2D/State_Machine/Throwing_State"]
 position = Vector2(20, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D/State_Machine/Throwing_State/Throwing_spot"]
+[node name="throwing_spot_mark" type="Sprite2D" parent="CharacterBody2D/State_Machine/Throwing_State/Throwing_spot"]
 texture = ExtResource("11_oysyi")
 
 [node name="Harvesting_State" type="Node2D" parent="CharacterBody2D/State_Machine" node_paths=PackedStringArray("picking_spot", "body")]
@@ -1692,20 +1699,20 @@ w_shape = NodePath("W")
 picking_spot = NodePath("../State_Machine/Harvesting_State/Picking_spot")
 
 [node name="S" type="CollisionShape2D" parent="CharacterBody2D/Interaction_Aim"]
-position = Vector2(0, 19)
-shape = SubResource("RectangleShape2D_tqo13")
+position = Vector2(0, 17)
+shape = SubResource("CircleShape2D_8jttq")
 
 [node name="E" type="CollisionShape2D" parent="CharacterBody2D/Interaction_Aim"]
-position = Vector2(20, -1)
-shape = SubResource("RectangleShape2D_tqo13")
+position = Vector2(19, -1)
+shape = SubResource("CircleShape2D_sp7xx")
 
 [node name="W" type="CollisionShape2D" parent="CharacterBody2D/Interaction_Aim"]
-position = Vector2(-20, -1)
-shape = SubResource("RectangleShape2D_tqo13")
+position = Vector2(-19, -1)
+shape = SubResource("CircleShape2D_nk218")
 
 [node name="N" type="CollisionShape2D" parent="CharacterBody2D/Interaction_Aim"]
-position = Vector2(0, -21)
-shape = SubResource("RectangleShape2D_tqo13")
+position = Vector2(0, -20)
+shape = SubResource("CircleShape2D_o1vnj")
 
 [node name="Inventory" type="Node2D" parent="." node_paths=PackedStringArray("Canvas")]
 process_mode = 3

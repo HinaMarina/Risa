@@ -19,10 +19,9 @@ func _ready() -> void:
 	arrange_pacing()
 	calculate_next_step()
 
-func _process(delta: float) -> void:
-	if harvestable == true:
-		if Input.is_action_just_pressed("Harvest"):
-			harvest()
+func _input(event: InputEvent) -> void:
+	if event.is_action("Harvest") && harvestable:
+		harvest()
 	
 func arrange_pacing():
 	if regrowable:
@@ -53,17 +52,20 @@ func enable_harvest():
 		
 func harvest():
 	ItemPickManager.on_picking_item(harvested_plant)
-	ItemPickManager.number_of_harvested += 1
-	if regrowth_number <= 0:
-		self.queue_free()	
+	var result = await ItemPickManager.harvest_answer
+	if result == true:
+		ItemPickManager.number_of_harvested += 1
+		if regrowth_number <= 0:
+			self.queue_free()	
+		else:
+			age = round(age_to_grow - pacing)
+			Sprite.frame -= 1
+			harvestable = false
+			harvest_area2d.monitoring = false
+		
+		regrowth_number -= 1
 	else:
-		age = round(age_to_grow - pacing)
-		Sprite.frame -= 1
-		harvestable = false
-		harvest_area2d.monitoring = false
-	
-	regrowth_number -= 1
-
+		pass
 
 
 func _on_area_2d_area_entered(_area: Area2D) -> void:

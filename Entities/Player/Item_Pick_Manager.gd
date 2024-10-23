@@ -5,6 +5,7 @@ var stored_items : Array
 var item_numbers : Array
 signal item_pickup(item)
 signal new_item_stored(item,amount)
+signal harvest_answer(value:bool)
 
 func on_picking_item(item:PackedScene):
 	item_pickup.emit(item)

@@ -21,6 +21,6 @@ func on_seedpack_aquisition(newitem:PackedScene,newquantity:int):
 			
 		
 			
-func on_slot_full(_item:Node,slot:Slot,quantity:int):
+func on_slot_full(_item:Node,_slot:Slot,quantity:int):
 	if quantity > 0:
 		on_seedpack_aquisition(last_pack,quantity)
