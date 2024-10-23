@@ -3,8 +3,9 @@ class_name State_Machine extends State
 @export var Idle_state : State
 @export var Run_state: State
 @export var Harvesting_state: State
+@export var Throwing_state: State
 var is_holding:bool
-
+var item_being_hold:Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
@@ -35,10 +36,11 @@ func _input(event: InputEvent) -> void:
 			input_vector = input_vector.normalized()
 			update_state_input_vector()
 	if is_holding:
-		if event.is_action("Harvest") && current_state == Idle_state:
-			print('jogandoostrecofora')
-			for child in Harvesting_state.picking_spot.get_children():
-				child.queue_free()
+		if event.is_action("Harvest") && (current_state == Idle_state || current_state == Run_state):
+			set_state(Throwing_state)
+			can_player_move = false
+			await Throwing_state.item_throw
+			can_player_move = true
 			is_holding = false
 			update_holding_status()
 			
@@ -62,12 +64,13 @@ func harvesting_requisition(item:PackedScene):
 	Harvesting_state.item_harvested = item
 	set_state(Harvesting_state)
 	
-func finished_harvesting(item:PackedScene):
+func finished_harvesting(item:Node2D):
 	can_player_move = true
 	is_holding = true
+	item_being_hold = item
 	update_holding_status()
 
 func update_holding_status():
 	for each in children_states:
 		if each.has_method("holding_something_setter"):
-			each.holding_something_setter(is_holding)
+			each.holding_something_setter(is_holding,item_being_hold)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=3 uid="uid://dqtkwh84ekv2u"]
+[gd_scene load_steps=104 format=3 uid="uid://dqtkwh84ekv2u"]
 
 [ext_resource type="Script" path="res://Entities/Player/State Machine/State_Machine.gd" id="1_cont1"]
 [ext_resource type="Script" path="res://Entities/Player/Player.gd" id="1_rq6fq"]
@@ -15,10 +15,12 @@
 [ext_resource type="Script" path="res://Entities/Player/State Machine/harvesting_state.gd" id="8_b67xc"]
 [ext_resource type="Texture2D" uid="uid://bpwjts6k5hani" path="res://Entities/Player/Sprites/watering_mockup.png" id="9_3l025"]
 [ext_resource type="Texture2D" uid="uid://v4rno6suy740" path="res://Prototype Assets/ToolBag/Toolbag_UI_visuals/Bag_and_Hand_Design.png" id="9_351fr"]
+[ext_resource type="Script" path="res://Entities/Player/State Machine/throwing_state.gd" id="9_i64eu"]
 [ext_resource type="Script" path="res://Entities/Player/Inventory_canvas.gd" id="9_xf3gc"]
 [ext_resource type="Texture2D" uid="uid://3p2oivsvihoa" path="res://Entities/Player/Sprites/Hoeing_mockup.png" id="10_ajjbb"]
 [ext_resource type="PackedScene" uid="uid://isr3rwadl3da" path="res://Entities/Player/Toolbag/Toolbag_inventory_structure.tscn" id="10_wb5kh"]
 [ext_resource type="Texture2D" uid="uid://cxyatupdfkvei" path="res://Prototype Assets/ToolBag/Toolbag_UI_visuals/slot_hover_and_focus.png" id="11_7sf6f"]
+[ext_resource type="Texture2D" uid="uid://dr7qmbn0fbmm4" path="res://Entities/Player/Sprites/throw_aim.png" id="11_oysyi"]
 [ext_resource type="PackedScene" uid="uid://dq1ghx5ied6wg" path="res://Entities/Player/Toolbag/seeds_inventory_Structure.tscn" id="11_rpd38"]
 [ext_resource type="Texture2D" uid="uid://dpl4hds6asxj" path="res://Entities/Player/Sprites/Planting_mockup.png" id="11_wejte"]
 [ext_resource type="Texture2D" uid="uid://l54x0nk0g5in" path="res://Prototype Assets/ToolBag/Toolbag_UI_visuals/Selection_Label.png" id="12_aovfk"]
@@ -650,6 +652,20 @@ tracks/1/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"throw"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_wqdk8"]
 length = 0.001
@@ -705,6 +721,20 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"throw"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_llqxm"]
@@ -1473,12 +1503,13 @@ am_pm_label = NodePath("Clock_layer/VBoxContainer/TimeBoxContainer/am_pm_label")
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_t4snm")
 
-[node name="State_Machine" type="Node2D" parent="CharacterBody2D" node_paths=PackedStringArray("Idle_state", "Run_state", "Harvesting_state", "body")]
+[node name="State_Machine" type="Node2D" parent="CharacterBody2D" node_paths=PackedStringArray("Idle_state", "Run_state", "Harvesting_state", "Throwing_state", "body")]
 process_mode = 1
 script = ExtResource("1_cont1")
 Idle_state = NodePath("Idle_State")
 Run_state = NodePath("Run_State")
 Harvesting_state = NodePath("Harvesting_State")
+Throwing_state = NodePath("Throwing_State")
 body = NodePath("..")
 
 [node name="Run_State" type="Node2D" parent="CharacterBody2D/State_Machine" node_paths=PackedStringArray("body")]
@@ -1529,10 +1560,13 @@ texture = ExtResource("5_sqlrm")
 hframes = 12
 vframes = 3
 
-[node name="Throwing_State" type="Node2D" parent="CharacterBody2D/State_Machine"]
-visible = false
+[node name="Throwing_State" type="Node2D" parent="CharacterBody2D/State_Machine" node_paths=PackedStringArray("throwing_spot", "body")]
+script = ExtResource("9_i64eu")
+throwing_spot = NodePath("Throwing_spot")
+body = NodePath("../..")
 
 [node name="AnimationTree" type="AnimationTree" parent="CharacterBody2D/State_Machine/Throwing_State"]
+active = false
 tree_root = SubResource("AnimationNodeBlendSpace1D_iyw33")
 anim_player = NodePath("../AnimationPlayer")
 parameters/blend_position = Vector2(0, 0)
@@ -1547,6 +1581,12 @@ position = Vector2(0, -21)
 texture = ExtResource("7_b1vor")
 flip_h = true
 hframes = 6
+
+[node name="Throwing_spot" type="Node2D" parent="CharacterBody2D/State_Machine/Throwing_State"]
+position = Vector2(20, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D/State_Machine/Throwing_State/Throwing_spot"]
+texture = ExtResource("11_oysyi")
 
 [node name="Harvesting_State" type="Node2D" parent="CharacterBody2D/State_Machine" node_paths=PackedStringArray("picking_spot", "body")]
 visible = false
@@ -1571,7 +1611,7 @@ flip_h = true
 hframes = 7
 
 [node name="Picking_spot" type="Node2D" parent="CharacterBody2D/State_Machine/Harvesting_State"]
-position = Vector2(0, -41)
+position = Vector2(0, -40)
 
 [node name="Tool_State" type="Node2D" parent="CharacterBody2D/State_Machine"]
 visible = false

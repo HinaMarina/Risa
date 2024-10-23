@@ -17,7 +17,7 @@ func physics_do():
 	super()
 	move()
 	
-func holding_something_setter(value:bool):
+func holding_something_setter(value:bool, _item:Node2D):
 	holding_something = value
 
 func set_state_assets():

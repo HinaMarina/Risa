@@ -5,6 +5,7 @@ extends Node
 signal day_updated(day,month)
 var month_size:int = 28
 var current_week = func week(): return int(current_day/7)
+@warning_ignore("integer_division")
 	
 func _input(_event: InputEvent) -> void:
 	

@@ -8,8 +8,10 @@ func do():
 	super()
 	sets_animation()
 
-func holding_something_setter(value:bool):
+
+func holding_something_setter(value:bool, _item:Node2D):
 	holding_something = value
+
 			
 func sets_animation():
 	if holding_something:
